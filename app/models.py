@@ -51,6 +51,7 @@ class Analysis:
     importance: int                       # 1~3
     sentiment: str                        # 호재/악재/중립
     headline: str                         # 한 줄 요약 (간결)
+    metric: str = ""                      # 핵심 키워드/수치 칩 (예: "유상증자 철회", "중간배당")
     actions: list[str] = field(default_factory=list)  # 후속 액션 안내
     tags: list[str] = field(default_factory=list)      # 분류 태그
     engine: str = "rules"                 # rules / llm
@@ -65,6 +66,7 @@ class Analysis:
             "importance_label": self.importance_label,
             "sentiment": self.sentiment,
             "headline": self.headline,
+            "metric": self.metric,
             "actions": self.actions,
             "tags": self.tags,
             "engine": self.engine,

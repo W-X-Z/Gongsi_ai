@@ -19,7 +19,8 @@
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "단일판매·공급계약 정정 공시",
+        "headline": "단일판매·공급계약 정정 체결",
+        "metric": "공급계약·정정",
         "actions": [
           "정정 사유와 변경된 계약금액 확인",
           "최근 매출 대비 비중 점검"
@@ -44,7 +45,8 @@
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "공급계약 체결(자율공시), 수주 확보",
+        "headline": "신규 공급계약 체결 (자율공시)",
+        "metric": "공급계약·자율",
         "actions": [
           "계약금액·기간과 발주처 확인",
           "매출 대비 계약 비중 점검"
@@ -69,7 +71,8 @@
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "단일판매·공급계약 정정 공시",
+        "headline": "단일판매·공급계약 정정 체결",
+        "metric": "공급계약·정정",
         "actions": [
           "변경된 계약금액·기간 확인",
           "정정 사유 점검"
@@ -94,7 +97,8 @@
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "공급계약 체결, 수주 확보",
+        "headline": "신규 공급계약 체결, 수주 확보",
+        "metric": "공급계약",
         "actions": [
           "계약금액의 매출 대비 비중 확인",
           "계약 상대방·기간 점검"
@@ -119,7 +123,8 @@
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "중립",
-        "headline": "유상증자 철회, 지분 희석 우려 해소",
+        "headline": "유상증자 철회 — 지분 희석 우려 해소",
+        "metric": "유상증자 철회",
         "actions": [
           "철회 사유(수요예측 등) 확인",
           "자금조달 차질 여부 점검"
@@ -143,7 +148,8 @@
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "중립",
-        "headline": "전환사채 만기 전 취득, 잠재 희석 축소",
+        "headline": "전환사채 만기 전 취득 — 희석 축소",
+        "metric": "CB 조기상환",
         "actions": [
           "취득 규모와 잔여 미상환 CB 확인",
           "취득 자금 출처 점검"
@@ -169,6 +175,7 @@
         "importance_label": "보통",
         "sentiment": "중립",
         "headline": "경영권 변경 계약 정정 공시",
+        "metric": "경영권 변경",
         "actions": [
           "인수 주체·지분율 확인",
           "변경된 계약 조건 점검"
@@ -193,6 +200,7 @@
         "importance_label": "보통",
         "sentiment": "중립",
         "headline": "자회사 통한 타법인 지분 취득",
+        "metric": "타법인 취득",
         "actions": [
           "취득 대상·금액과 목적 확인",
           "연결 실적 영향 점검"
@@ -217,6 +225,7 @@
         "importance_label": "보통",
         "sentiment": "중립",
         "headline": "타법인 주식 취득 결정",
+        "metric": "타법인 취득",
         "actions": [
           "취득 대상·금액과 목적 확인",
           "자금 조달 방법 점검"
@@ -240,7 +249,8 @@
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "자기주식 취득 결정, 주주환원 신호",
+        "headline": "자기주식 취득 결정 — 주주환원",
+        "metric": "자사주 취득",
         "actions": [
           "취득 규모·기간 확인",
           "소각 여부로 환원 강도 점검"
@@ -264,7 +274,8 @@
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "자사주 신탁계약 체결, 주주환원",
+        "headline": "자사주 신탁계약 체결 — 주주환원",
+        "metric": "자사주 신탁",
         "actions": [
           "신탁 계약금액·기간 확인",
           "실제 취득 진행률 점검"
@@ -288,7 +299,8 @@
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "자기주식 취득 결정, 주주환원 신호",
+        "headline": "자기주식 취득 결정 — 주주환원",
+        "metric": "자사주 취득",
         "actions": [
           "취득 규모·방식 확인",
           "소각 여부 점검"
@@ -312,7 +324,8 @@
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "중간배당 결정, 주주환원 강화",
+        "headline": "중간배당 결정 — 주주환원 강화",
+        "metric": "중간배당",
         "actions": [
           "주당 배당금·시가배당률 확인",
           "배당기준일 점검"
@@ -337,6 +350,7 @@
         "importance_label": "보통",
         "sentiment": "호재",
         "headline": "현금·현물 배당 결정",
+        "metric": "현금배당",
         "actions": [
           "주당 배당금·배당률 확인",
           "배당기준일 점검"

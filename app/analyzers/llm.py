@@ -28,14 +28,20 @@ _INSTRUCTION = """다음 공시를 분석해 JSON으로만 답하세요.
 
 규칙:
 - sentiment: "호재" / "악재" / "중립" 중 하나. 주가에 미칠 단기 영향 기준.
-- headline: 핵심을 담은 한 문장(45자 이내, 군더더기 없이).
+- headline: 핵심 키워드를 앞세운 한 문장(40자 이내, 군더더기 없이).
+  · 공시명만 보고 단정 말 것. 예: '만기 전 사채취득'은 발행이 아니라 회수,
+    '유상증자 철회'는 증자가 아님. 실제 사건의 방향을 정확히 반영하세요.
+- metric: 제목 위에 띄울 핵심 키워드 칩 1개(12자 이내). 금액이 확실하면 숫자 포함,
+  불확실하면 사건 키워드만(예: "유상증자 철회", "CB 조기상환", "중간배당", "자사주 취득").
+  ※ 금액·비율을 추측해 지어내지 말 것.
 - actions: 투자자가 추가로 확인할 정보 1~2개. 각 항목 35자 이내, 동작 지시형.
 - 모바일 화면이므로 절대 길게 쓰지 마세요."""
 
 
 class _Verdict(BaseModel):
     sentiment: str = Field(description="호재/악재/중립")
-    headline: str = Field(description="한 줄 요약 (45자 이내)")
+    headline: str = Field(description="키워드를 앞세운 한 줄 요약 (40자 이내)")
+    metric: str = Field(description="핵심 키워드/수치 칩 (12자 이내)")
     actions: list[str] = Field(description="후속 액션 1~2개", min_length=1, max_length=3)
 
 
@@ -69,6 +75,7 @@ class LLMInterpreter(BaseInterpreter):
             importance=rule.importance,  # 중요도는 룰 기반 선별값을 유지
             sentiment=sentiment,
             headline=v.headline.strip() or rule.headline,
+            metric=(v.metric or "").strip() or (rule.tags[0] if rule.tags else ""),
             actions=actions[:2],
             tags=list(rule.tags),
             engine="llm",

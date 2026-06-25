@@ -16,6 +16,7 @@ class RuleResult:
     headline: str
     action: str
     tags: list[str] = field(default_factory=list)
+    metric: str = ""
     matched: bool = False
 
     def to_analysis(self, engine: str = "rules") -> Analysis:
@@ -24,6 +25,7 @@ class RuleResult:
             importance=self.importance,
             sentiment=self.sentiment,
             headline=self.headline,
+            metric=self.metric or (self.tags[0] if self.tags else ""),
             actions=[self.action],
             tags=list(self.tags),
             engine=engine,

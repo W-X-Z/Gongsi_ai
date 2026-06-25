@@ -2,90 +2,137 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#0b0d12" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0b0f" />
 <title>오늘의 주요 공시</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0b0d12;
-    --card: #161a22;
-    --card-2: #1d222c;
-    --line: #262c38;
-    --text: #e9edf4;
-    --muted: #8a93a6;
-    --pos: #ff5a5f;   /* 호재 = 빨강(상승) */
-    --neg: #3d7bff;   /* 악재 = 파랑(하락) */
-    --neu: #7a8295;   /* 중립 */
-    --hi: #ffb020;    /* 중요도 높음 */
+    --bg: #0a0b0f;
+    --bg-2: #0e1016;
+    --card: #14161d;
+    --card-hi: #181b24;
+    --line: #232633;
+    --line-2: #2c3140;
+    --text: #eef1f7;
+    --muted: #8b93a7;
+    --muted-2: #5b6376;
+
+    --pos: #ff5b67; --pos-bg: rgba(255,91,103,.13);
+    --neg: #4d8bff; --neg-bg: rgba(77,139,255,.13);
+    --neu: #9aa3b8; --neu-bg: rgba(154,163,184,.12);
+    --hi: #ffc24b;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body { margin: 0; background: var(--bg); color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-      "Pretendard", "Malgun Gothic", system-ui, sans-serif; }
-  .wrap { max-width: 480px; margin: 0 auto; min-height: 100vh; }
+  html, body { margin: 0; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(77,139,255,.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -.01em;
+  }
+  .wrap { max-width: 500px; margin: 0 auto; min-height: 100vh; padding-bottom: 48px; }
+
+  /* ── Header ─────────────────────────── */
   header {
-    position: sticky; top: 0; z-index: 10;
-    padding: 16px 16px 12px; background: rgba(11,13,18,.92);
-    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 20;
+    padding: 18px 18px 12px;
+    background: linear-gradient(180deg, rgba(10,11,15,.96) 70%, rgba(10,11,15,0));
+    backdrop-filter: blur(12px);
   }
-  .title { font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
-  .sub { margin-top: 3px; font-size: 12px; color: var(--muted); }
-  .filters { display: flex; gap: 6px; margin-top: 12px; }
-  .chip {
-    flex: 1; text-align: center; padding: 8px 0; font-size: 13px; font-weight: 600;
-    border: 1px solid var(--line); border-radius: 999px; color: var(--muted);
-    background: transparent; cursor: pointer;
-  }
-  .chip.on { color: #fff; background: var(--card-2); border-color: #38405200; }
-  .feed { padding: 12px 12px 40px; display: flex; flex-direction: column; gap: 10px; }
+  .head-row { display: flex; align-items: baseline; gap: 8px; }
+  .title { font-size: 21px; font-weight: 800; letter-spacing: -.4px; }
+  .date { margin-left: auto; font-size: 12px; font-weight: 600; color: var(--muted);
+    background: var(--card); border: 1px solid var(--line); padding: 4px 9px; border-radius: 999px; }
+
+  .stats { display: flex; gap: 6px; margin-top: 13px; }
+  .stat { flex: 1; display: flex; flex-direction: column; gap: 2px; align-items: center;
+    padding: 9px 0; border-radius: 13px; border: 1px solid var(--line); background: var(--card); }
+  .stat .n { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 11px; font-weight: 600; color: var(--muted); }
+  .stat.pos .n { color: var(--pos); } .stat.neg .n { color: var(--neg); } .stat.neu .n { color: var(--neu); }
+
+  .filters { display: flex; gap: 6px; margin-top: 11px; }
+  .chip { flex: 1; padding: 9px 0; text-align: center; font-size: 13px; font-weight: 700;
+    color: var(--muted); background: transparent; border: 1px solid var(--line);
+    border-radius: 999px; cursor: pointer; transition: .15s; }
+  .chip.on { color: #fff; background: var(--card-hi); border-color: var(--line-2); }
+
+  /* ── Feed ───────────────────────────── */
+  .feed { padding: 8px 14px 0; display: flex; flex-direction: column; gap: 11px; }
 
   .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
-    padding: 14px; position: relative; overflow: hidden;
+    position: relative; background: var(--card);
+    border: 1px solid var(--line); border-radius: 18px;
+    padding: 15px 16px 13px; overflow: hidden;
+    transition: border-color .15s, transform .15s;
   }
-  .card::before {
-    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-    background: var(--bar, var(--neu));
-  }
-  .row1 { display: flex; align-items: center; gap: 8px; }
-  .corp { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
-  .code { font-size: 11px; color: var(--muted); }
-  .spacer { flex: 1; }
-  .badges { display: flex; gap: 6px; flex-shrink: 0; }
-  .badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
-  .b-pos { color: #fff; background: var(--pos); }
-  .b-neg { color: #fff; background: var(--neg); }
-  .b-neu { color: #fff; background: var(--neu); }
-  .b-imp { color: #1a1205; background: var(--hi); }
-  .b-imp.lvl2 { color: var(--text); background: #2b3340; }
-  .b-imp.lvl1 { color: var(--muted); background: #20262f; }
+  .card::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px;
+    width: 3px; border-radius: 3px; background: var(--accent, var(--neu)); }
+  @media (hover: hover) { .card:hover { border-color: var(--line-2); transform: translateY(-1px); } }
 
-  .headline { margin-top: 10px; font-size: 15px; font-weight: 600; line-height: 1.4; letter-spacing: -.2px; }
-  .report { margin-top: 4px; font-size: 12px; color: var(--muted); }
+  .top { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .metric { font-size: 12px; font-weight: 800; color: var(--accent);
+    background: var(--accent-bg); padding: 4px 10px; border-radius: 8px; letter-spacing: -.2px; }
+  .imp { margin-left: auto; display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; color: var(--muted); }
+  .imp .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-2); }
+  .imp.lvl3 { color: var(--hi); } .imp.lvl3 .dot { background: var(--hi); }
+  .sent { font-size: 12px; font-weight: 800; padding: 4px 11px; border-radius: 999px;
+    color: var(--accent); background: var(--accent-bg); }
 
-  .actions { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 10px; display: none; }
-  .actions.open { display: block; }
-  .actions li { font-size: 13px; color: #cfd6e4; line-height: 1.5; margin: 0 0 4px; padding-left: 2px; }
-  .actions ul { margin: 0; padding-left: 18px; }
+  .headline { font-size: 17px; font-weight: 700; line-height: 1.34; letter-spacing: -.3px; margin: 2px 0 0; }
 
-  .foot { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
-  .toggle { font-size: 12px; font-weight: 700; color: var(--muted); background: none;
-    border: none; padding: 0; cursor: pointer; }
-  .toggle .car { display: inline-block; transition: transform .15s; }
+  .meta { display: flex; align-items: center; gap: 7px; margin-top: 9px; flex-wrap: wrap; }
+  .corp { font-size: 13px; font-weight: 700; }
+  .ticker { font-size: 11px; font-weight: 600; color: var(--muted);
+    border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; font-variant-numeric: tabular-nums; }
+  .report { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; color: var(--muted); border: 1px solid var(--line);
+    padding: 2px 7px; border-radius: 6px; }
+
+  .actions { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .22s ease; }
+  .actions.open { grid-template-rows: 1fr; }
+  .actions-in { overflow: hidden; }
+  .actions ul { margin: 11px 0 2px; padding: 11px 0 0 0; border-top: 1px dashed var(--line); list-style: none; }
+  .actions li { position: relative; font-size: 13px; color: #ced5e4; line-height: 1.5;
+    padding-left: 16px; margin-bottom: 5px; }
+  .actions li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  .foot { display: flex; align-items: center; margin-top: 12px; }
+  .toggle { font-size: 12px; font-weight: 700; color: var(--muted); background: none; border: none;
+    padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+  .toggle .car { transition: transform .2s; font-size: 10px; }
   .toggle.open .car { transform: rotate(180deg); }
-  .link { font-size: 12px; color: var(--muted); text-decoration: none; margin-left: auto; }
-  .tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
-  .tag { font-size: 10px; color: var(--muted); border: 1px solid var(--line); padding: 2px 7px; border-radius: 6px; }
+  .src { margin-left: auto; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; }
+  .src:active { color: var(--text); }
 
-  .state { padding: 60px 20px; text-align: center; color: var(--muted); font-size: 14px; }
-  .src { font-size: 10px; color: var(--muted); border: 1px solid var(--line); padding: 1px 6px; border-radius: 5px; }
+  .state { padding: 70px 24px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .skel { height: 92px; border-radius: 18px; border: 1px solid var(--line);
+    background: linear-gradient(100deg, var(--card) 30%, var(--card-hi) 50%, var(--card) 70%);
+    background-size: 200% 100%; animation: sh 1.1s linear infinite; }
+  @keyframes sh { to { background-position: -200% 0; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="title">📑 오늘의 주요 공시</div>
-    <div class="sub" id="sub">불러오는 중…</div>
+    <div class="head-row">
+      <span class="title">오늘의 주요 공시</span>
+      <span class="date" id="date">—</span>
+    </div>
+    <div class="stats" id="stats">
+      <div class="stat pos"><span class="n" id="cPos">0</span><span class="l">호재</span></div>
+      <div class="stat neg"><span class="n" id="cNeg">0</span><span class="l">악재</span></div>
+      <div class="stat neu"><span class="n" id="cNeu">0</span><span class="l">중립</span></div>
+    </div>
     <div class="filters" id="filters">
       <button class="chip on" data-imp="2">주요</button>
       <button class="chip" data-imp="3">중요만</button>
@@ -93,96 +140,89 @@
     </div>
   </header>
   <div class="feed" id="feed">
-    <div class="state">불러오는 중…</div>
+    <div class="skel"></div><div class="skel"></div><div class="skel"></div>
   </div>
 </div>
 
 <script>
 const SENT = {
-  "호재": { cls: "b-pos", bar: "var(--pos)" },
-  "악재": { cls: "b-neg", bar: "var(--neg)" },
-  "중립": { cls: "b-neu", bar: "var(--neu)" },
+  "호재": { v: "var(--pos)", b: "var(--pos-bg)" },
+  "악재": { v: "var(--neg)", b: "var(--neg-bg)" },
+  "중립": { v: "var(--neu)", b: "var(--neu-bg)" },
 };
-// 데이터 소스: 정적 배포 시 빌드 스크립트가 './feed.json'으로 바꿔 끼웁니다.
 const FEED_URL = window.__FEED_URL__ || "/api/feed?min_importance=1";
 let minImp = 2;
-let allItems = [];   // 전체를 한 번만 받아두고, 필터는 클라이언트에서 처리
+let allItems = [];
 
-function esc(s) {
-  return (s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-}
+const esc = s => (s ?? "").replace(/[&<>"]/g, c =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 function card(it) {
-  const a = it.analysis;
-  const s = SENT[a.sentiment] || SENT["중립"];
-  const impCls = a.importance >= 3 ? "" : "lvl" + a.importance;
-  const actions = (a.actions || []).map(x => `<li>${esc(x)}</li>`).join("");
+  const a = it.analysis, s = SENT[a.sentiment] || SENT["중립"];
+  const impCls = a.importance >= 3 ? "lvl3" : "";
+  const metric = a.metric ? `<span class="metric">${esc(a.metric)}</span>` : "";
   const tags = (a.tags || []).map(t => `<span class="tag">#${esc(t)}</span>`).join("");
-
+  const acts = (a.actions || []).map(x => `<li>${esc(x)}</li>`).join("");
   return `
-  <div class="card" style="--bar:${s.bar}">
-    <div class="row1">
-      <span class="corp">${esc(it.corp_name)}</span>
-      <span class="code">${it.stock_code ? esc(it.stock_code) : esc(it.source)}</span>
-      <span class="spacer"></span>
-      <span class="badges">
-        <span class="badge b-imp ${impCls}">중요도 ${esc(a.importance_label)}</span>
-        <span class="badge ${s.cls}">${esc(a.sentiment)}</span>
-      </span>
+  <article class="card" style="--accent:${s.v};--accent-bg:${s.b}">
+    <div class="top">
+      ${metric}
+      <span class="sent">${esc(a.sentiment)}</span>
+      <span class="imp ${impCls}"><span class="dot"></span>중요도 ${esc(a.importance_label)}</span>
     </div>
-    <div class="headline">${esc(a.headline)}</div>
+    <h2 class="headline">${esc(a.headline)}</h2>
+    <div class="meta">
+      <span class="corp">${esc(it.corp_name)}</span>
+      ${it.stock_code ? `<span class="ticker">${esc(it.stock_code)}</span>` : ""}
+    </div>
     <div class="report">${esc(it.report_nm)}</div>
     ${tags ? `<div class="tags">${tags}</div>` : ""}
-    <div class="actions"><ul>${actions}</ul></div>
+    <div class="actions"><div class="actions-in"><ul>${acts}</ul></div></div>
     <div class="foot">
       <button class="toggle">후속 확인 <span class="car">▾</span></button>
-      <a class="link" href="${esc(it.url)}" target="_blank" rel="noopener">원문 ↗</a>
+      <a class="src" href="${esc(it.url)}" target="_blank" rel="noopener">원문 ↗</a>
     </div>
-  </div>`;
+  </article>`;
 }
 
 function render() {
   const feed = document.getElementById("feed");
   const items = allItems.filter(it => (it.analysis?.importance || 0) >= minImp);
-  if (!items.length) {
-    feed.innerHTML = `<div class="state">해당 조건의 공시가 없습니다.</div>`;
-    return;
-  }
+  const cnt = { "호재": 0, "악재": 0, "중립": 0 };
+  items.forEach(it => cnt[it.analysis.sentiment] != null && cnt[it.analysis.sentiment]++);
+  document.getElementById("cPos").textContent = cnt["호재"];
+  document.getElementById("cNeg").textContent = cnt["악재"];
+  document.getElementById("cNeu").textContent = cnt["중립"];
+  if (!items.length) { feed.innerHTML = `<div class="state">해당 조건의 공시가 없습니다.</div>`; return; }
   feed.innerHTML = items.map(card).join("");
-  feed.querySelectorAll(".toggle").forEach(btn => {
-    btn.addEventListener("click", () => {
-      btn.closest(".card").querySelector(".actions").classList.toggle("open");
-      btn.classList.toggle("open");
-    });
-  });
+  feed.querySelectorAll(".toggle").forEach(btn => btn.addEventListener("click", () => {
+    btn.closest(".card").querySelector(".actions").classList.toggle("open");
+    btn.classList.toggle("open");
+  }));
 }
 
 async function load() {
   const feed = document.getElementById("feed");
-  const sub = document.getElementById("sub");
-  feed.innerHTML = `<div class="state">불러오는 중…</div>`;
   try {
-    const res = await fetch(FEED_URL);
-    const data = await res.json();
-    const m = data.meta || {};
+    const data = await (await fetch(FEED_URL)).json();
     allItems = data.items || [];
-    const srcLabel = m.collector === "dart" ? "DART 데이터" : "샘플 데이터";
-    const engLabel = m.analyzer === "llm" ? "AI 해석" : "룰 해석";
-    const stamp = m.generated_at ? ` · ${m.generated_at}` : "";
-    sub.innerHTML = `${srcLabel} · ${engLabel} · 총 ${allItems.length}건${stamp}`;
+    const m = data.meta || {};
+    const src = m.collector === "dart" ? "DART" : "샘플";
+    const eng = m.analyzer === "llm" ? "AI 해석" : "룰 해석";
+    document.getElementById("date").textContent =
+      `${m.generated_at || ""} · ${src} · ${eng}`.replace(/^ · /, "");
     render();
   } catch (e) {
-    feed.innerHTML = `<div class="state">불러오기 실패: ${esc(String(e))}</div>`;
+    feed.innerHTML = `<div class="state">불러오기 실패<br/>${esc(String(e))}</div>`;
   }
 }
 
 document.getElementById("filters").addEventListener("click", e => {
-  const chip = e.target.closest(".chip");
-  if (!chip) return;
+  const chip = e.target.closest(".chip"); if (!chip) return;
   document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
   chip.classList.add("on");
   minImp = parseInt(chip.dataset.imp, 10);
-  render();   // 재요청 없이 즉시 필터링
+  render();
 });
 
 load();
