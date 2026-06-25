@@ -1,29 +1,30 @@
 {
   "meta": {
-    "count": 14,
-    "collector": "dart",
+    "count": 11,
+    "collector": "sample",
     "analyzer": "llm",
-    "generated_at": "2026-06-25"
+    "generated_at": "2026-06-25",
+    "note": "데모 샘플 — 회사·종목코드·공시유형·원문링크는 실제(2026-06-25 DART)이나, 금액은 예시값으로 실제 공시 수치와 다릅니다. (에이치브이엠 185억만 웹 출처 기반)"
   },
   "items": [
     {
-      "corp_name": "우원개발",
-      "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
-      "rcept_no": "20260625900384",
+      "corp_name": "에이치브이엠",
+      "report_nm": "단일판매ㆍ공급계약체결",
+      "rcept_no": "20260625900304",
       "rcept_dt": "20260625",
-      "stock_code": "046940",
-      "flr_nm": "우원개발",
+      "stock_code": "295310",
+      "flr_nm": "에이치브이엠",
       "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900384",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900304",
       "analysis": {
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "단일판매·공급계약 정정 체결",
-        "metric": "공급계약·정정",
+        "headline": "우주항공 합금 185억 공급계약 체결",
+        "metric": "공급계약 185억",
         "actions": [
-          "정정 사유와 변경된 계약금액 확인",
-          "최근 매출 대비 비중 점검"
+          "계약금액의 최근 매출 대비 비중 확인",
+          "계약 상대방·납기(~26.11) 점검"
         ],
         "tags": [
           "수주",
@@ -45,11 +46,37 @@
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "신규 공급계약 체결 (자율공시)",
-        "metric": "공급계약·자율",
+        "headline": "디스플레이 장비 120억 공급계약 (자율)",
+        "metric": "공급계약 120억",
         "actions": [
-          "계약금액·기간과 발주처 확인",
-          "매출 대비 계약 비중 점검"
+          "계약금액의 매출 대비 비중 확인",
+          "발주처·납기 점검"
+        ],
+        "tags": [
+          "수주",
+          "실적"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "우원개발",
+      "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+      "rcept_no": "20260625900384",
+      "rcept_dt": "20260625",
+      "stock_code": "046940",
+      "flr_nm": "우원개발",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900384",
+      "analysis": {
+        "importance": 3,
+        "importance_label": "높음",
+        "sentiment": "호재",
+        "headline": "건설 공급계약 정정 — 계약금액 변경",
+        "metric": "공급계약·정정",
+        "actions": [
+          "정정 전후 금액 차이 확인",
+          "변경 사유 점검"
         ],
         "tags": [
           "수주",
@@ -71,7 +98,7 @@
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "단일판매·공급계약 정정 체결",
+        "headline": "지반공사 공급계약 정정 공시",
         "metric": "공급계약·정정",
         "actions": [
           "변경된 계약금액·기간 확인",
@@ -85,27 +112,126 @@
       }
     },
     {
-      "corp_name": "에이치브이엠",
-      "report_nm": "단일판매ㆍ공급계약체결",
-      "rcept_no": "20260625900304",
+      "corp_name": "이스트소프트",
+      "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)",
+      "rcept_no": "20260625000245",
       "rcept_dt": "20260625",
-      "stock_code": "295310",
-      "flr_nm": "에이치브이엠",
+      "stock_code": "047560",
+      "flr_nm": "이스트소프트",
       "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900304",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000245",
       "analysis": {
-        "importance": 3,
-        "importance_label": "높음",
+        "importance": 2,
+        "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "신규 공급계약 체결, 수주 확보",
-        "metric": "공급계약",
+        "headline": "자사주 50억 신탁계약 체결 — 주주환원",
+        "metric": "자사주신탁 50억",
         "actions": [
-          "계약금액의 매출 대비 비중 확인",
-          "계약 상대방·기간 점검"
+          "신탁 기간·중개사 확인",
+          "실제 취득 진행률 점검"
         ],
         "tags": [
-          "수주",
-          "실적"
+          "주주환원"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "드림인사이트",
+      "report_nm": "주요사항보고서(자기주식취득결정)",
+      "rcept_no": "20260625000277",
+      "rcept_dt": "20260625",
+      "stock_code": "362990",
+      "flr_nm": "드림인사이트",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000277",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "호재",
+        "headline": "자기주식 30억 취득 결정",
+        "metric": "자사주취득 30억",
+        "actions": [
+          "취득 기간·방법 확인",
+          "소각 여부 점검"
+        ],
+        "tags": [
+          "주주환원"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "MH에탄올",
+      "report_nm": "주요사항보고서(자기주식취득결정)",
+      "rcept_no": "20260625000249",
+      "rcept_dt": "20260625",
+      "stock_code": "023150",
+      "flr_nm": "MH에탄올",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000249",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "호재",
+        "headline": "자기주식 40억 취득 결정",
+        "metric": "자사주취득 40억",
+        "actions": [
+          "취득 방식 확인",
+          "소각 여부 점검"
+        ],
+        "tags": [
+          "주주환원"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "폴레드",
+      "report_nm": "현금ㆍ현물배당결정(중간배당)",
+      "rcept_no": "20260625900306",
+      "rcept_dt": "20260625",
+      "stock_code": "487580",
+      "flr_nm": "폴레드",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900306",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "호재",
+        "headline": "중간배당 주당 200원 결정",
+        "metric": "중간배당 200원",
+        "actions": [
+          "시가배당률 확인",
+          "배당기준일 점검"
+        ],
+        "tags": [
+          "주주환원"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "메타바이오메드",
+      "report_nm": "현금ㆍ현물배당결정",
+      "rcept_no": "20260625900295",
+      "rcept_dt": "20260625",
+      "stock_code": "059210",
+      "flr_nm": "메타바이오메드",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900295",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "호재",
+        "headline": "현금배당 주당 150원 결정",
+        "metric": "현금배당 150원",
+        "actions": [
+          "시가배당률 확인",
+          "배당기준일 점검"
+        ],
+        "tags": [
+          "주주환원"
         ],
         "engine": "llm"
       }
@@ -126,7 +252,7 @@
         "headline": "유상증자 철회 — 지분 희석 우려 해소",
         "metric": "유상증자 철회",
         "actions": [
-          "철회 사유(수요예측 등) 확인",
+          "철회 사유 확인",
           "자금조달 차질 여부 점검"
         ],
         "tags": [
@@ -151,212 +277,12 @@
         "headline": "전환사채 만기 전 취득 — 희석 축소",
         "metric": "CB 조기상환",
         "actions": [
-          "취득 규모와 잔여 미상환 CB 확인",
+          "잔여 미상환 CB 확인",
           "취득 자금 출처 점검"
         ],
         "tags": [
           "자본",
           "희석"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "에이프릴바이오",
-      "report_nm": "[기재정정]경영권변경등에관한계약체결",
-      "rcept_no": "20260625900366",
-      "rcept_dt": "20260625",
-      "stock_code": "397030",
-      "flr_nm": "에이프릴바이오",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900366",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "중립",
-        "headline": "경영권 변경 계약 정정 공시",
-        "metric": "경영권 변경",
-        "actions": [
-          "인수 주체·지분율 확인",
-          "변경된 계약 조건 점검"
-        ],
-        "tags": [
-          "지배구조"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "OCI홀딩스",
-      "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)",
-      "rcept_no": "20260625800361",
-      "rcept_dt": "20260625",
-      "stock_code": "010060",
-      "flr_nm": "OCI홀딩스",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625800361",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "중립",
-        "headline": "자회사 통한 타법인 지분 취득",
-        "metric": "타법인 취득",
-        "actions": [
-          "취득 대상·금액과 목적 확인",
-          "연결 실적 영향 점검"
-        ],
-        "tags": [
-          "투자"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "OCI",
-      "report_nm": "타법인주식및출자증권취득결정",
-      "rcept_no": "20260625800355",
-      "rcept_dt": "20260625",
-      "stock_code": "456040",
-      "flr_nm": "OCI",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625800355",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "중립",
-        "headline": "타법인 주식 취득 결정",
-        "metric": "타법인 취득",
-        "actions": [
-          "취득 대상·금액과 목적 확인",
-          "자금 조달 방법 점검"
-        ],
-        "tags": [
-          "투자"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "드림인사이트",
-      "report_nm": "주요사항보고서(자기주식취득결정)",
-      "rcept_no": "20260625000277",
-      "rcept_dt": "20260625",
-      "stock_code": "362990",
-      "flr_nm": "드림인사이트",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000277",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "호재",
-        "headline": "자기주식 취득 결정 — 주주환원",
-        "metric": "자사주 취득",
-        "actions": [
-          "취득 규모·기간 확인",
-          "소각 여부로 환원 강도 점검"
-        ],
-        "tags": [
-          "주주환원"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "이스트소프트",
-      "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)",
-      "rcept_no": "20260625000245",
-      "rcept_dt": "20260625",
-      "stock_code": "047560",
-      "flr_nm": "이스트소프트",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000245",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "호재",
-        "headline": "자사주 신탁계약 체결 — 주주환원",
-        "metric": "자사주 신탁",
-        "actions": [
-          "신탁 계약금액·기간 확인",
-          "실제 취득 진행률 점검"
-        ],
-        "tags": [
-          "주주환원"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "MH에탄올",
-      "report_nm": "주요사항보고서(자기주식취득결정)",
-      "rcept_no": "20260625000249",
-      "rcept_dt": "20260625",
-      "stock_code": "023150",
-      "flr_nm": "MH에탄올",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000249",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "호재",
-        "headline": "자기주식 취득 결정 — 주주환원",
-        "metric": "자사주 취득",
-        "actions": [
-          "취득 규모·방식 확인",
-          "소각 여부 점검"
-        ],
-        "tags": [
-          "주주환원"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "폴레드",
-      "report_nm": "현금ㆍ현물배당결정(중간배당)",
-      "rcept_no": "20260625900306",
-      "rcept_dt": "20260625",
-      "stock_code": "487580",
-      "flr_nm": "폴레드",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900306",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "호재",
-        "headline": "중간배당 결정 — 주주환원 강화",
-        "metric": "중간배당",
-        "actions": [
-          "주당 배당금·시가배당률 확인",
-          "배당기준일 점검"
-        ],
-        "tags": [
-          "주주환원"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "메타바이오메드",
-      "report_nm": "현금ㆍ현물배당결정",
-      "rcept_no": "20260625900295",
-      "rcept_dt": "20260625",
-      "stock_code": "059210",
-      "flr_nm": "메타바이오메드",
-      "source": "DART",
-      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900295",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "호재",
-        "headline": "현금·현물 배당 결정",
-        "metric": "현금배당",
-        "actions": [
-          "주당 배당금·배당률 확인",
-          "배당기준일 점검"
-        ],
-        "tags": [
-          "주주환원"
         ],
         "engine": "llm"
       }
