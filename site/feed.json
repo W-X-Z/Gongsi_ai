@@ -1,53 +1,152 @@
 {
   "meta": {
     "count": 14,
-    "collector": "sample",
+    "collector": "dart",
     "analyzer": "llm",
     "generated_at": "2026-06-25"
   },
   "items": [
     {
-      "corp_name": "삼성전자",
-      "report_nm": "단일판매ㆍ공급계약체결",
-      "rcept_no": "SAMPLE202606250000",
+      "corp_name": "우원개발",
+      "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+      "rcept_no": "20260625900384",
       "rcept_dt": "20260625",
-      "stock_code": "005930",
-      "flr_nm": "삼성전자",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "046940",
+      "flr_nm": "우원개발",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900384",
       "analysis": {
         "importance": 3,
         "importance_label": "높음",
         "sentiment": "호재",
-        "headline": "대형 공급계약 체결, 매출 가시성 확대",
+        "headline": "단일판매·공급계약 정정 공시",
         "actions": [
-          "계약금액의 최근 매출 대비 비중 확인",
-          "계약기간·발주처 신뢰도 점검"
+          "정정 사유와 변경된 계약금액 확인",
+          "최근 매출 대비 비중 점검"
         ],
         "tags": [
-          "실적",
-          "수주"
+          "수주",
+          "실적"
         ],
         "engine": "llm"
       }
     },
     {
-      "corp_name": "에코프로비엠",
-      "report_nm": "유상증자결정",
-      "rcept_no": "SAMPLE202606250001",
+      "corp_name": "영우디에스피",
+      "report_nm": "단일판매ㆍ공급계약체결(자율공시)",
+      "rcept_no": "20260625900356",
       "rcept_dt": "20260625",
-      "stock_code": "247540",
-      "flr_nm": "에코프로비엠",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "143540",
+      "flr_nm": "영우디에스피",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900356",
       "analysis": {
         "importance": 3,
         "importance_label": "높음",
-        "sentiment": "악재",
-        "headline": "유상증자 결정, 지분 희석 우려",
+        "sentiment": "호재",
+        "headline": "공급계약 체결(자율공시), 수주 확보",
         "actions": [
-          "발행가·증자 규모와 희석률 확인",
-          "조달 자금의 사용 목적 점검"
+          "계약금액·기간과 발주처 확인",
+          "매출 대비 계약 비중 점검"
+        ],
+        "tags": [
+          "수주",
+          "실적"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "동아지질",
+      "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+      "rcept_no": "20260625800341",
+      "rcept_dt": "20260625",
+      "stock_code": "028100",
+      "flr_nm": "동아지질",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625800341",
+      "analysis": {
+        "importance": 3,
+        "importance_label": "높음",
+        "sentiment": "호재",
+        "headline": "단일판매·공급계약 정정 공시",
+        "actions": [
+          "변경된 계약금액·기간 확인",
+          "정정 사유 점검"
+        ],
+        "tags": [
+          "수주",
+          "실적"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "에이치브이엠",
+      "report_nm": "단일판매ㆍ공급계약체결",
+      "rcept_no": "20260625900304",
+      "rcept_dt": "20260625",
+      "stock_code": "295310",
+      "flr_nm": "에이치브이엠",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900304",
+      "analysis": {
+        "importance": 3,
+        "importance_label": "높음",
+        "sentiment": "호재",
+        "headline": "공급계약 체결, 수주 확보",
+        "actions": [
+          "계약금액의 매출 대비 비중 확인",
+          "계약 상대방·기간 점검"
+        ],
+        "tags": [
+          "수주",
+          "실적"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "디모아",
+      "report_nm": "기타주요경영사항(유상증자결정(주주배정후 실권주 일반공모)철회)",
+      "rcept_no": "20260625900293",
+      "rcept_dt": "20260625",
+      "stock_code": "016670",
+      "flr_nm": "디모아",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900293",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "중립",
+        "headline": "유상증자 철회, 지분 희석 우려 해소",
+        "actions": [
+          "철회 사유(수요예측 등) 확인",
+          "자금조달 차질 여부 점검"
+        ],
+        "tags": [
+          "자본"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "키이스트",
+      "report_nm": "전환사채(해외전환사채포함)발행후만기전사채취득",
+      "rcept_no": "20260625900395",
+      "rcept_dt": "20260625",
+      "stock_code": "054780",
+      "flr_nm": "키이스트",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900395",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "중립",
+        "headline": "전환사채 만기 전 취득, 잠재 희석 축소",
+        "actions": [
+          "취득 규모와 잔여 미상환 CB 확인",
+          "취득 자금 출처 점검"
         ],
         "tags": [
           "자본",
@@ -57,71 +156,93 @@
       }
     },
     {
-      "corp_name": "HLB",
-      "report_nm": "투자판단관련주요경영사항(임상)",
-      "rcept_no": "SAMPLE202606250003",
+      "corp_name": "에이프릴바이오",
+      "report_nm": "[기재정정]경영권변경등에관한계약체결",
+      "rcept_no": "20260625900366",
       "rcept_dt": "20260625",
-      "stock_code": "028300",
-      "flr_nm": "HLB",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "397030",
+      "flr_nm": "에이프릴바이오",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900366",
       "analysis": {
-        "importance": 3,
-        "importance_label": "높음",
+        "importance": 2,
+        "importance_label": "보통",
         "sentiment": "중립",
-        "headline": "임상 관련 주요 경영사항 공시",
+        "headline": "경영권 변경 계약 정정 공시",
         "actions": [
-          "임상 단계·결과 수치 원문 확인",
-          "허가·후속 일정 점검"
+          "인수 주체·지분율 확인",
+          "변경된 계약 조건 점검"
         ],
         "tags": [
-          "R&D",
-          "바이오"
+          "지배구조"
         ],
         "engine": "llm"
       }
     },
     {
-      "corp_name": "위메이드",
-      "report_nm": "횡령ㆍ배임혐의발생",
-      "rcept_no": "SAMPLE202606250008",
+      "corp_name": "OCI홀딩스",
+      "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)",
+      "rcept_no": "20260625800361",
       "rcept_dt": "20260625",
-      "stock_code": "112040",
-      "flr_nm": "위메이드",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "010060",
+      "flr_nm": "OCI홀딩스",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625800361",
       "analysis": {
-        "importance": 3,
-        "importance_label": "높음",
-        "sentiment": "악재",
-        "headline": "횡령·배임 혐의 발생, 리스크 점검 필요",
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "중립",
+        "headline": "자회사 통한 타법인 지분 취득",
         "actions": [
-          "혐의 금액·임원 직위 확인",
-          "거래정지·실질심사 가능성 점검"
+          "취득 대상·금액과 목적 확인",
+          "연결 실적 영향 점검"
         ],
         "tags": [
-          "지배구조",
-          "리스크"
+          "투자"
         ],
         "engine": "llm"
       }
     },
     {
-      "corp_name": "두산에너빌리티",
-      "report_nm": "자기주식취득결정",
-      "rcept_no": "SAMPLE202606250004",
+      "corp_name": "OCI",
+      "report_nm": "타법인주식및출자증권취득결정",
+      "rcept_no": "20260625800355",
       "rcept_dt": "20260625",
-      "stock_code": "034020",
-      "flr_nm": "두산에너빌리티",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "456040",
+      "flr_nm": "OCI",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625800355",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "중립",
+        "headline": "타법인 주식 취득 결정",
+        "actions": [
+          "취득 대상·금액과 목적 확인",
+          "자금 조달 방법 점검"
+        ],
+        "tags": [
+          "투자"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "드림인사이트",
+      "report_nm": "주요사항보고서(자기주식취득결정)",
+      "rcept_no": "20260625000277",
+      "rcept_dt": "20260625",
+      "stock_code": "362990",
+      "flr_nm": "드림인사이트",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000277",
       "analysis": {
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "자사주 취득 결정, 주주환원 신호",
+        "headline": "자기주식 취득 결정, 주주환원 신호",
         "actions": [
-          "취득 규모·방식(직접/신탁) 확인",
+          "취득 규모·기간 확인",
           "소각 여부로 환원 강도 점검"
         ],
         "tags": [
@@ -131,44 +252,67 @@
       }
     },
     {
-      "corp_name": "셀트리온",
-      "report_nm": "무상증자결정",
-      "rcept_no": "SAMPLE202606250005",
+      "corp_name": "이스트소프트",
+      "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)",
+      "rcept_no": "20260625000245",
       "rcept_dt": "20260625",
-      "stock_code": "068270",
-      "flr_nm": "셀트리온",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "047560",
+      "flr_nm": "이스트소프트",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000245",
       "analysis": {
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "무상증자 결정, 권리락 일정 확인 필요",
+        "headline": "자사주 신탁계약 체결, 주주환원",
         "actions": [
-          "배정비율·권리락일 확인",
-          "유통주식 증가 영향 점검"
+          "신탁 계약금액·기간 확인",
+          "실제 취득 진행률 점검"
         ],
         "tags": [
-          "자본",
           "주주환원"
         ],
         "engine": "llm"
       }
     },
     {
-      "corp_name": "CJ제일제당",
-      "report_nm": "현금ㆍ현물배당결정",
-      "rcept_no": "SAMPLE202606250006",
+      "corp_name": "MH에탄올",
+      "report_nm": "주요사항보고서(자기주식취득결정)",
+      "rcept_no": "20260625000249",
       "rcept_dt": "20260625",
-      "stock_code": "097950",
-      "flr_nm": "CJ제일제당",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "023150",
+      "flr_nm": "MH에탄올",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000249",
       "analysis": {
         "importance": 2,
         "importance_label": "보통",
         "sentiment": "호재",
-        "headline": "배당 결정, 주주환원 지속",
+        "headline": "자기주식 취득 결정, 주주환원 신호",
+        "actions": [
+          "취득 규모·방식 확인",
+          "소각 여부 점검"
+        ],
+        "tags": [
+          "주주환원"
+        ],
+        "engine": "llm"
+      }
+    },
+    {
+      "corp_name": "폴레드",
+      "report_nm": "현금ㆍ현물배당결정(중간배당)",
+      "rcept_no": "20260625900306",
+      "rcept_dt": "20260625",
+      "stock_code": "487580",
+      "flr_nm": "폴레드",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900306",
+      "analysis": {
+        "importance": 2,
+        "importance_label": "보통",
+        "sentiment": "호재",
+        "headline": "중간배당 결정, 주주환원 강화",
         "actions": [
           "주당 배당금·시가배당률 확인",
           "배당기준일 점검"
@@ -180,170 +324,25 @@
       }
     },
     {
-      "corp_name": "코스모신소재",
-      "report_nm": "전환사채권발행결정",
-      "rcept_no": "SAMPLE202606250007",
+      "corp_name": "메타바이오메드",
+      "report_nm": "현금ㆍ현물배당결정",
+      "rcept_no": "20260625900295",
       "rcept_dt": "20260625",
-      "stock_code": "005070",
-      "flr_nm": "코스모신소재",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
+      "stock_code": "059210",
+      "flr_nm": "메타바이오메드",
+      "source": "DART",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625900295",
       "analysis": {
         "importance": 2,
         "importance_label": "보통",
-        "sentiment": "악재",
-        "headline": "전환사채 발행, 잠재 희석 물량 주의",
+        "sentiment": "호재",
+        "headline": "현금·현물 배당 결정",
         "actions": [
-          "전환가·리픽싱 조건 확인",
-          "전환 시 희석 규모 점검"
+          "주당 배당금·배당률 확인",
+          "배당기준일 점검"
         ],
         "tags": [
-          "자본",
-          "희석"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "한미반도체",
-      "report_nm": "신규시설투자등",
-      "rcept_no": "SAMPLE202606250011",
-      "rcept_dt": "20260625",
-      "stock_code": "042700",
-      "flr_nm": "한미반도체",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "중립",
-        "headline": "신규 시설투자 집행, 증설 기대",
-        "actions": [
-          "투자 규모·목적 확인",
-          "조달 방법·회수 시점 점검"
-        ],
-        "tags": [
-          "투자"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "대한항공",
-      "report_nm": "소송등의제기ㆍ신청",
-      "rcept_no": "SAMPLE202606250013",
-      "rcept_dt": "20260625",
-      "stock_code": "003490",
-      "flr_nm": "대한항공",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
-      "analysis": {
-        "importance": 2,
-        "importance_label": "보통",
-        "sentiment": "악재",
-        "headline": "소송 제기, 사업 영향 점검 필요",
-        "actions": [
-          "소송 금액·상대방 확인",
-          "사업·실적 영향 범위 점검"
-        ],
-        "tags": [
-          "리스크"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "카카오",
-      "report_nm": "주식등의대량보유상황보고서",
-      "rcept_no": "SAMPLE202606250002",
-      "rcept_dt": "20260625",
-      "stock_code": "035720",
-      "flr_nm": "국민연금공단",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
-      "analysis": {
-        "importance": 1,
-        "importance_label": "낮음",
-        "sentiment": "중립",
-        "headline": "국민연금 지분 변동 보고",
-        "actions": [
-          "보유목적(단순투자/경영참여) 확인",
-          "지분율 증감 방향 점검"
-        ],
-        "tags": [
-          "지분"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "LG화학",
-      "report_nm": "기업설명회(IR)개최(안내공시)",
-      "rcept_no": "SAMPLE202606250009",
-      "rcept_dt": "20260625",
-      "stock_code": "051910",
-      "flr_nm": "LG화학",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
-      "analysis": {
-        "importance": 1,
-        "importance_label": "낮음",
-        "sentiment": "중립",
-        "headline": "IR(기업설명회) 개최 안내",
-        "actions": [
-          "발표 자료의 가이던스 확인",
-          "신규 사업 언급 여부 점검"
-        ],
-        "tags": [
-          "IR"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "네이버",
-      "report_nm": "분기보고서",
-      "rcept_no": "SAMPLE202606250010",
-      "rcept_dt": "20260625",
-      "stock_code": "035420",
-      "flr_nm": "네이버",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
-      "analysis": {
-        "importance": 1,
-        "importance_label": "낮음",
-        "sentiment": "중립",
-        "headline": "분기보고서 제출",
-        "actions": [
-          "전년동기 대비 실적 추세 확인",
-          "주요 사업부 수익성 점검"
-        ],
-        "tags": [
-          "정기공시"
-        ],
-        "engine": "llm"
-      }
-    },
-    {
-      "corp_name": "신라젠",
-      "report_nm": "감사보고서제출",
-      "rcept_no": "SAMPLE202606250012",
-      "rcept_dt": "20260625",
-      "stock_code": "215600",
-      "flr_nm": "삼정회계법인",
-      "source": "SAMPLE",
-      "url": "https://dart.fss.or.kr/dsab007/main.do",
-      "analysis": {
-        "importance": 1,
-        "importance_label": "낮음",
-        "sentiment": "중립",
-        "headline": "감사보고서 제출, 감사의견 확인 필요",
-        "actions": [
-          "감사의견(적정 여부) 확인",
-          "계속기업 불확실성 문구 점검"
-        ],
-        "tags": [
-          "정기공시"
+          "주주환원"
         ],
         "engine": "llm"
       }
