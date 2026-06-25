@@ -212,7 +212,7 @@ async function load() {
     const data = await (await fetch(FEED_URL)).json();
     allItems = data.items || [];
     const m = data.meta || {};
-    const src = m.collector === "dart" ? "DART" : "샘플";
+    const src = { dart: "DART", news: "뉴스 기반", sample: "샘플" }[m.collector] || "샘플";
     const eng = m.analyzer === "llm" ? "AI 해석" : "룰 해석";
     document.getElementById("date").textContent =
       `${m.generated_at || ""} · ${src} · ${eng}`.replace(/^ · /, "");
