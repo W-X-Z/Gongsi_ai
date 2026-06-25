@@ -63,7 +63,36 @@ app/
 
 ---
 
-## API
+## 정적 배포 (GitHub Pages) — UI만 호스팅
+
+서버 없이 **스냅샷**으로 호스팅합니다. 수집·LLM 해석을 한 번 실행해 `site/feed.json`으로 굳히고, `site/`(정적)만 게시합니다.
+
+```bash
+# 스냅샷 재생성 (키 있으면 AI 해석, 없으면 룰 해석)
+python scripts/build_static.py
+```
+
+산출물
+```
+site/
+├── index.html     # ./feed.json 을 읽는 정적 UI
+└── feed.json      # 수집+해석 결과 스냅샷 (meta.analyzer 로 엔진 확인)
+```
+
+배포: `site/` 변경을 푸시하면 `.github/workflows/deploy-pages.yml`이 Pages로 게시합니다.
+> ⚙️ **최초 1회만**: 저장소 **Settings → Pages → Source = "GitHub Actions"** 로 설정.
+> 이후 발급되는 URL이 배포 주소입니다 (`https://<계정>.github.io/<repo>/`).
+
+현재 커밋된 `site/feed.json`은 **Claude가 샘플 공시를 해석해 만든 콘텐츠**입니다.
+DART/Anthropic 키를 넣고 `build_static.py`를 다시 돌리면 실데이터·AI 해석으로 교체됩니다.
+
+### 피드백 루프
+보시고 → **LLM 문구**는 `app/analyzers/llm.py`(프롬프트)·중요도/액션은 `keywords.py`,
+**UI**는 `app/static/index.html`을 고친 뒤 `build_static.py` 재실행 → 재배포.
+
+---
+
+## API (동적 서버 모드)
 
 | 메서드 | 경로 | 설명 |
 |---|---|---|

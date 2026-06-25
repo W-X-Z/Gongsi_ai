@@ -1,0 +1,36 @@
+name: Deploy static site to Pages
+
+# site/ 디렉터리(정적 스냅샷)를 GitHub Pages로 배포합니다.
+# ⚙️ 최초 1회: 저장소 Settings → Pages → Source = "GitHub Actions" 로 설정하세요.
+
+on:
+  push:
+    branches: ["claude/mts-disclosure-summary-6riuzv"]
+    paths:
+      - "site/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+      - id: deployment
+        uses: actions/deploy-pages@v4
