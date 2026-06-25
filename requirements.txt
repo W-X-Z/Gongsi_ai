@@ -1,0 +1,6 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27
+python-dotenv>=1.0
+# LLM 해석용(선택). 키가 없으면 룰 기반으로 자동 폴백됩니다.
+anthropic>=0.40

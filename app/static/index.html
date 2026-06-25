@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b0d12" />
+<title>오늘의 주요 공시</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --card: #161a22;
+    --card-2: #1d222c;
+    --line: #262c38;
+    --text: #e9edf4;
+    --muted: #8a93a6;
+    --pos: #ff5a5f;   /* 호재 = 빨강(상승) */
+    --neg: #3d7bff;   /* 악재 = 파랑(하락) */
+    --neu: #7a8295;   /* 중립 */
+    --hi: #ffb020;    /* 중요도 높음 */
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+      "Pretendard", "Malgun Gothic", system-ui, sans-serif; }
+  .wrap { max-width: 480px; margin: 0 auto; min-height: 100vh; }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    padding: 16px 16px 12px; background: rgba(11,13,18,.92);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  .title { font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
+  .sub { margin-top: 3px; font-size: 12px; color: var(--muted); }
+  .filters { display: flex; gap: 6px; margin-top: 12px; }
+  .chip {
+    flex: 1; text-align: center; padding: 8px 0; font-size: 13px; font-weight: 600;
+    border: 1px solid var(--line); border-radius: 999px; color: var(--muted);
+    background: transparent; cursor: pointer;
+  }
+  .chip.on { color: #fff; background: var(--card-2); border-color: #38405200; }
+  .feed { padding: 12px 12px 40px; display: flex; flex-direction: column; gap: 10px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 14px; position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--bar, var(--neu));
+  }
+  .row1 { display: flex; align-items: center; gap: 8px; }
+  .corp { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
+  .code { font-size: 11px; color: var(--muted); }
+  .spacer { flex: 1; }
+  .badges { display: flex; gap: 6px; flex-shrink: 0; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
+  .b-pos { color: #fff; background: var(--pos); }
+  .b-neg { color: #fff; background: var(--neg); }
+  .b-neu { color: #fff; background: var(--neu); }
+  .b-imp { color: #1a1205; background: var(--hi); }
+  .b-imp.lvl2 { color: var(--text); background: #2b3340; }
+  .b-imp.lvl1 { color: var(--muted); background: #20262f; }
+
+  .headline { margin-top: 10px; font-size: 15px; font-weight: 600; line-height: 1.4; letter-spacing: -.2px; }
+  .report { margin-top: 4px; font-size: 12px; color: var(--muted); }
+
+  .actions { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 10px; display: none; }
+  .actions.open { display: block; }
+  .actions li { font-size: 13px; color: #cfd6e4; line-height: 1.5; margin: 0 0 4px; padding-left: 2px; }
+  .actions ul { margin: 0; padding-left: 18px; }
+
+  .foot { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+  .toggle { font-size: 12px; font-weight: 700; color: var(--muted); background: none;
+    border: none; padding: 0; cursor: pointer; }
+  .toggle .car { display: inline-block; transition: transform .15s; }
+  .toggle.open .car { transform: rotate(180deg); }
+  .link { font-size: 12px; color: var(--muted); text-decoration: none; margin-left: auto; }
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
+  .tag { font-size: 10px; color: var(--muted); border: 1px solid var(--line); padding: 2px 7px; border-radius: 6px; }
+
+  .state { padding: 60px 20px; text-align: center; color: var(--muted); font-size: 14px; }
+  .src { font-size: 10px; color: var(--muted); border: 1px solid var(--line); padding: 1px 6px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="title">📑 오늘의 주요 공시</div>
+    <div class="sub" id="sub">불러오는 중…</div>
+    <div class="filters" id="filters">
+      <button class="chip on" data-imp="2">주요</button>
+      <button class="chip" data-imp="3">중요만</button>
+      <button class="chip" data-imp="1">전체</button>
+    </div>
+  </header>
+  <div class="feed" id="feed">
+    <div class="state">불러오는 중…</div>
+  </div>
+</div>
+
+<script>
+const SENT = {
+  "호재": { cls: "b-pos", bar: "var(--pos)" },
+  "악재": { cls: "b-neg", bar: "var(--neg)" },
+  "중립": { cls: "b-neu", bar: "var(--neu)" },
+};
+let minImp = 2;
+
+function esc(s) {
+  return (s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+function card(it) {
+  const a = it.analysis;
+  const s = SENT[a.sentiment] || SENT["중립"];
+  const impCls = a.importance >= 3 ? "" : "lvl" + a.importance;
+  const actions = (a.actions || []).map(x => `<li>${esc(x)}</li>`).join("");
+  const tags = (a.tags || []).map(t => `<span class="tag">#${esc(t)}</span>`).join("");
+
+  return `
+  <div class="card" style="--bar:${s.bar}">
+    <div class="row1">
+      <span class="corp">${esc(it.corp_name)}</span>
+      <span class="code">${it.stock_code ? esc(it.stock_code) : esc(it.source)}</span>
+      <span class="spacer"></span>
+      <span class="badges">
+        <span class="badge b-imp ${impCls}">중요도 ${esc(a.importance_label)}</span>
+        <span class="badge ${s.cls}">${esc(a.sentiment)}</span>
+      </span>
+    </div>
+    <div class="headline">${esc(a.headline)}</div>
+    <div class="report">${esc(it.report_nm)}</div>
+    ${tags ? `<div class="tags">${tags}</div>` : ""}
+    <div class="actions"><ul>${actions}</ul></div>
+    <div class="foot">
+      <button class="toggle">후속 확인 <span class="car">▾</span></button>
+      <a class="link" href="${esc(it.url)}" target="_blank" rel="noopener">원문 ↗</a>
+    </div>
+  </div>`;
+}
+
+async function load() {
+  const feed = document.getElementById("feed");
+  const sub = document.getElementById("sub");
+  feed.innerHTML = `<div class="state">불러오는 중…</div>`;
+  try {
+    const res = await fetch(`/api/feed?min_importance=${minImp}`);
+    const data = await res.json();
+    const m = data.meta || {};
+    const srcLabel = m.collector === "dart" ? "DART 실시간" : "샘플 데이터";
+    const engLabel = m.analyzer === "llm" ? "AI 해석" : "룰 해석";
+    sub.innerHTML = `${srcLabel} · ${engLabel} · ${m.count || 0}건`;
+
+    if (!data.items || !data.items.length) {
+      feed.innerHTML = `<div class="state">표시할 공시가 없습니다.<br/>기간(LOOKBACK_DAYS)이나 필터를 조정해 보세요.</div>`;
+      return;
+    }
+    feed.innerHTML = data.items.map(card).join("");
+    feed.querySelectorAll(".toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const c = btn.closest(".card");
+        c.querySelector(".actions").classList.toggle("open");
+        btn.classList.toggle("open");
+      });
+    });
+  } catch (e) {
+    feed.innerHTML = `<div class="state">불러오기 실패: ${esc(String(e))}</div>`;
+  }
+}
+
+document.getElementById("filters").addEventListener("click", e => {
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
+  chip.classList.add("on");
+  minImp = parseInt(chip.dataset.imp, 10);
+  load();
+});
+
+load();
+</script>
+</body>
+</html>
